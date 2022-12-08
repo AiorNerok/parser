@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from tabulate import tabulate
+from halo import Halo
 
 MAIN_URL = "https://www.python.org"
 
@@ -9,7 +10,13 @@ ua = UserAgent()
 
 headers = {"user-agent": ua.random}
 
+spinner = Halo(text='Loading', spinner='dots')
+spinner.start()
+
 response = requests.get(MAIN_URL, headers=headers)
+
+spinner.stop()
+
 
 soup = BeautifulSoup(response.content, features="html.parser")
 
