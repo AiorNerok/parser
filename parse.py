@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from tabulate import tabulate
 from halo import Halo
+import lxml
 
 MAIN_URL = "https://www.python.org"
 
@@ -18,7 +19,7 @@ response = requests.get(MAIN_URL, headers=headers)
 spinner.stop()
 
 
-soup = BeautifulSoup(response.content, features="html.parser")
+soup = BeautifulSoup(response.text, features="lxml")
 
 events_block = soup.find(class_="medium-widget event-widget last")
 events_menu = events_block.find_all("li")
