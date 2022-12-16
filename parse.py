@@ -1,9 +1,9 @@
+import lxml
 import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-from tabulate import tabulate
 from halo import Halo
-import lxml
+from tabulate import tabulate
 
 MAIN_URL = "https://www.python.org"
 
